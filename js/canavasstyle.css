@@ -1,0 +1,122 @@
+body {
+  
+  overflow-x: hidden;
+
+}
+
+#TextInput{
+  display:none;
+}
+/* particles */
+#particles-js {
+	display: inline-block;
+  position: absolute;
+  width: 100vw;
+  height:100vh;  
+  z-index: 1;
+}
+
+.textParticles {
+	width: 80%;
+	left:10%;
+	right:10%;
+	text-align: center;
+	display: inline-block;
+   position: absolute;
+   z-index: 2;
+}
+@media screen and (max-width: 480px) and (min-width: 320px) {
+    .textParticles {
+         width: 500px;
+    }
+}
+
+/* cursor replacement */
+.my-cursor {
+	background:-moz-linear-gradient(-90deg, transparent, #4084d6); background:-webkit-gradient(linear, 0 top, 0 bottom, from(transparent), to(#4084d6)); 
+	border-color:#553be9;
+  height: 50px;
+  width: 60px; 
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  pointer-events: none;
+}  
+
+/* arrows */
+.arrow-json-right{
+  bottom: 40%;
+  right: 2%;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  z-index: 3;
+}
+
+.arrow-json-left{
+  bottom: 40%;
+  left: 2%;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  transform: rotate(-180deg);
+  z-index: 3;
+}
+
+
+.gradient-background {
+	background: linear-gradient(-45deg, #D1DFE5, #E1E9EA, #FDFDFD, #E1E9EA);
+	background-size: 100% 100%;
+	-webkit-animation: gradient 15s ease infinite;
+	-moz-animation: gradient 15s ease infinite;
+	animation: gradient 15s ease infinite;
+  z-index: 1;
+}
+
+@-webkit-keyframes Gradient {
+	0% {
+	background-position: 0% 50%
+	}
+	50% {
+	background-position: 100% 50%
+	}
+	100% {
+	background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes gradient {
+	0% {
+	background-position: 0% 50%
+	}
+	50% {
+	background-position: 100% 50%
+	}
+	100% {
+	background-position: 0% 50%
+	}
+}
+
+@keyframes gradient {
+	0% {
+	background-position: 0% 50%
+	}
+	50% {
+	background-position: 100% 50%
+	}
+	100% {
+	background-position: 0% 50%
+	}
+}
+.mobileHide { display: inline;
+	
+width:60%;
+height: auto;
+left: 10%;
+right:10%;
+}
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px)
+{  .mobileHide { display: none;}}

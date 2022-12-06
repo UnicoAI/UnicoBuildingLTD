@@ -1,0 +1,587 @@
+	/*
+     Carousel with button controller animations
+	 Author: Marius Boncica
+                                                                  
+*/
+
+/* BASIC RESET */
+body{
+  overflow-x: hidden;
+}
+ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,body,p,blockquote,fieldset,input{margin:0; padding:0;}
+
+h1 { font: bold 50px Helvetica, Arial, Sans-serif; text-align: center; color: #eee; text-shadow: 0px 2px 6px #341b8b; }
+h1 small{ font-size: 20px; text-transform:uppercase; letter-spacing: 14px; display: block; color: #ccc; margin-top:10px; }
+h2 a { display: block; text-decoration: none; margin: 0 0 30px 0; font: italic 40px Georgia, Times, Serif;  text-align: center; color: #bfe1f1; text-shadow: 0px 2px 6px #341b8b; }
+h2 a:hover { color: #341b8b; }
+/*video wrapper full width autoplay */
+.video-wrapper {
+  width:100%;
+  height:100vh;
+  overflow: hidden;
+}
+video {
+  object-fit: cover;
+  width:100%;
+  height:100%;
+}
+
+/*butoon chat form*/
+.buttonc { position:relative; margin:5px 0; width:280px;
+	height:50px; -moz-border-radius: 40px/100px; -webkit-border-radius: 40px 100px; border-radius: 40px/100px;
+	background:-moz-linear-gradient(-90deg, transparent,#4084d6); background:-webkit-gradient(linear, 0 top, 0 bottom, from(transparent), to(#4084d6));
+	text-align: center;
+  font-size: 20px;
+  padding-top: 10px;
+  color:white;
+  text-decoration:none;
+  -webkit-transition-property: width;
+	-webkit-transition-duration: 500ms;
+}
+.buttonc:hover  { z-index:998; background-color:#4084d6; width:380px;
+  text-align: center;
+  font-size: 25px;
+  color:white;
+  text-decoration:none;
+	background:-moz-linear-gradient(-90deg, transparent, #3b49e9); background:-webkit-gradient(linear, 0 top, 0 bottom, from(transparent), to(#3b49e9)); }
+
+
+/*BUTTONS ALL PAGES*/
+.buttona { position:relative; margin:5px 0; width:120px;
+	height:50px; -moz-border-radius: 40px/100px; -webkit-border-radius: 40px 100px; border-radius: 40px/100px;
+	background:-moz-linear-gradient(-90deg, transparent,#4084d6); background:-webkit-gradient(linear, 0 top, 0 bottom, from(transparent), to(#4084d6));
+	text-align: center;
+  font-size: 20px;
+  padding-top: 10px;
+  color:white;
+  text-decoration:none;
+  -webkit-transition-property: width;
+	-webkit-transition-duration: 500ms;
+}
+.buttona:hover  { z-index:998; background-color:#4084d6; width:160px;
+  text-align: center;
+  font-size: 25px;
+  color:white;
+  text-decoration:none;
+	background:-moz-linear-gradient(-90deg, transparent, #3b49e9); background:-webkit-gradient(linear, 0 top, 0 bottom, from(transparent), to(#3b49e9)); }
+
+/* Carousel project page bootstrap*/
+.carousel,
+.item,
+.active {
+    width: 100%;
+}
+
+.carousel-inner {
+  width: 100%;
+  background: rgb(144, 148, 150);
+}
+
+.carousel-caption{padding-bottom:80px;}
+
+h2{font-size: 60px;}
+p{padding:10px}
+
+/* Background images are set within the HTML using inline CSS, not here */
+
+.fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    opacity:1;
+}
+
+
+
+
+/**
+ * Button
+ */
+.btn-transparent {
+  background: transparent;
+  color: rgb(209, 216, 242);
+  border: 2px solid rgb(117, 117, 122);
+}
+.btn-transparent:hover {
+  background-color: rgb(130, 130, 141);
+}
+
+.btn-rounded {
+  border-radius: 70px;
+}
+
+.btn-large {
+  padding: 11px 45px;
+  font-size: 18px;
+}
+
+/**
+ * Change animation duration
+ */
+.animated {
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fadeInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(100px, 0, 0);
+    transform: translate3d(100px, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(100px, 0, 0);
+    transform: translate3d(100px, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.fadeInRight {
+  -webkit-animation-name: fadeInRight;
+  animation-name: fadeInRight;
+}
+
+/* end carousle project page bootstrap */
+
+/* 3d carousel rotating */
+#slideshow {
+  margin: auto;
+  padding-top: 50px;
+  height: 150px;
+  width: 100%;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.slideshow-title {
+  font-family: 'Allerta Stencil';
+  font-size: 32px;
+  color: rgb(30, 26, 34);
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 0%;
+  letter-spacing: 3px;
+  font-weight: 100;
+}
+
+.entire-content {
+  margin: auto;
+  width: 250px;
+  perspective: 1000px;
+  position: relative;
+  padding-top: 20px;
+}
+
+.content-carousel {
+  width: 60%;
+  position: absolute;
+  float: none;
+  animation: rotate 30s infinite linear;
+  transform-style: preserve-3d;
+}
+
+.content-carousel:hover {
+  animation-play-state: paused;
+  cursor: pointer;
+}
+
+.content-carousel figure {
+  width: 60%;
+  height: 250px;
+  border: 1px solid #fff;
+  overflow: hidden;
+  position: absolute;
+}
+
+/* childnodes for images carousel */
+.content-carousel figure:nth-child(1) {
+  transform: rotateY(0deg) translateZ(300px);
+} .content-carousel figure:nth-child(2) {
+  transform: rotateY(90deg) translateZ(300px);
+} .content-carousel figure:nth-child(3) {
+  transform: rotateY(180deg) translateZ(300px);
+} .content-carousel figure:nth-child(4) {
+  transform: rotateY(270deg) translateZ(300px);
+}
+
+.shadow {
+  position: absolute;
+  box-shadow: 0px 0px 20px 0px #000;
+  border-radius: 5px;
+}
+
+.content-carousel img {
+  image-rendering: auto;
+  transition: all 300ms;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+} 
+.content-carousel img:hover {
+  transform: scale(1.2);
+  transition: all 300ms;
+  opacity: 0.7;
+}
+
+@keyframes rotate {
+  from {tranform: rotateY(0deg);} 
+  to {transform: rotateY(360deg);}
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1; /* Sit on top */
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #fff;
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+.caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: rgb(34, 31, 31);
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Animation */
+.modal-content, .caption {
+  animation: zoom 0.6s;
+}
+
+@keyframes zoom {
+  from {transform: scale(0.1);}
+  to {transform: scale(1);}
+}
+
+/* Close Button */
+.closeb {
+  position: absolute;
+  top: 45px;
+  right: 35px;
+  background-color: #fff;
+  color: #141416;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.closeb:hover, .closeb:focus {
+  color: rgb(20, 20, 20);
+  text-decoration: none;
+  cursor: pointer;
+}
+/* end project 3d carousel*/
+/* 3d home page carosule canvas */
+.about {
+  position: fixed;
+  z-index: 10;
+  bottom: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  transition: all 0.2s ease;
+}
+.about .bg_links {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 100%;
+  backdrop-filter: blur(5px);
+  position: absolute;
+}
+.about .logo {
+  width: 40px;
+  height: 40px;
+ 
+  background-image: url(https://unicoais.com/LogoUnico.png);
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: 10px 7px;
+  opacity: 0.9;
+  transition: all 1s 0.2s ease;
+  bottom: 0;
+  right: 0;
+}
+.about .social {
+  opacity: 0;
+  right: 0;
+  bottom: 0;
+}
+.about .social .icon {
+  width: 100%;
+  height: 100%;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  display: flex;
+  transition: all 0.2s ease, background-color 0.4s ease;
+  opacity: 0;
+  border-radius: 100%;
+}
+.about .social.portfolio {
+  transition: all 0.8s ease;
+}
+.about .social.portfolio .icon {
+  background-image: url(https://www.unicoais.com/call22.gif);
+}
+.about .social.dribbble {
+  transition: all 0.3s ease;
+}
+.about .social.dribbble .icon {
+  background-image: url(https://www.unicoais.com/facebook.gif);
+}
+.about .social.linkedin {
+  transition: all 0.8s ease;
+}
+.about .social.linkedin .icon {
+  background-image: url(https://www.unicoais.com/contactd1.gif);
+}
+.about:hover {
+  width: 105px;
+  height: 105px;
+  transition: all 0.6s cubic-bezier(0.64, 0.01, 0.07, 1.65);
+}
+.about:hover .logo {
+  opacity: 1;
+  transition: all 0.6s ease;
+}
+.about:hover .social {
+  opacity: 1;
+}
+.about:hover .social .icon {
+  opacity: 0.9;
+}
+.about:hover .social:hover {
+  background-size: 28px;
+}
+.about:hover .social:hover .icon {
+  background-size: 65%;
+  opacity: 1;
+}
+.about:hover .social.portfolio {
+  right: 0;
+  bottom: calc(100% - 40px);
+  transition: all 0.3s 0s cubic-bezier(0.64, 0.01, 0.07, 1.65);
+}
+.about:hover .social.portfolio .icon:hover {
+  background-color: #698fb7;
+}
+.about:hover .social.dribbble {
+  bottom: 45%;
+  right: 45%;
+  transition: all 0.3s 0.15s cubic-bezier(0.64, 0.01, 0.07, 1.65);
+}
+.about:hover .social.dribbble .icon:hover {
+  background-color: #ea4c89;
+}
+.about:hover .social.linkedin {
+  bottom: 0;
+  right: calc(100% - 40px);
+  transition: all 0.3s 0.25s cubic-bezier(0.64, 0.01, 0.07, 1.65);
+}
+.about:hover .social.linkedin .icon:hover {
+  background-color: #0077b5;
+}
+label{
+  -moz-border-radius: 40px/100px; -webkit-border-radius: 40px 100px; border-radius: 40px/100px;
+	background:-moz-linear-gradient(-90deg, transparent,#4084d6); background:-webkit-gradient(linear, 0 top, 0 bottom, from(transparent), to(#4084d6));
+	text-align: center;
+ 
+  color:white;
+  font-size: 16px;
+}
+/* container mail fotm validation*/
+.formvalidation{
+  position: fixed;
+  z-index: 1;
+  bottom: 10%;
+ left: 10%;
+
+ padding-top: 100px;
+ padding-right: 30px;
+ padding-top: 50px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  transition: all 0.2s ease;
+  display: none;
+}
+/*validation error messge */
+.error
+{
+  color: red;
+  size: 80%;
+  font-size: 15px;
+}
+.hidden
+{
+  display:none;
+}
+
+
+
+/*STYLE 3D CONTAINER scroll evvent drag and dropp */
+#drag-container, #spin-container {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: center-block;
+  margin: auto;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: rotateX(-10deg);
+          transform: rotateX(-10deg);
+}
+
+#drag-container img, #drag-container video {
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  line-height: 200px;
+  font-size: 50px;
+  text-align: center;
+  -webkit-box-shadow: 0 0 8px #fff;
+          box-shadow: 0 0 8px #fff;
+  -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0005);
+}
+
+#drag-container img:hover, #drag-container video:hover {
+  -webkit-box-shadow: 0 0 15px #fffd;
+          box-shadow: 0 0 15px #fffd;
+  -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0007);
+}
+
+#drag-container p {
+  font-family: Serif;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%) rotateX(90deg);
+          transform: translate(-50%,-50%) rotateX(90deg);
+  color: rgb(55, 55, 59);
+}
+@media (max-width: 750px), (max-height: 450px) { #drag-container { max-width: 600px; } }
+@media (max-width: 450px), (max-height: 350px) { #drag-container{ display:none; } }
+@media (max-width: 280px), (max-height: 250px) { #drag-container { display:none;} }
+
+#ground {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%) rotateX(90deg);
+          transform: translate(-50%,-50%) rotateX(90deg);
+  background: -webkit-radial-gradient(center center, farthest-side , #9993, transparent);
+}
+
+#music-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@-webkit-keyframes spin {
+  from{
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  } to{
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+  }
+}
+
+@keyframes spin {
+  from{
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  } to{
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+  }
+}
+@-webkit-keyframes spinRevert {
+  from{
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+  } to{
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
+}
+@keyframes spinRevert {
+  from{
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+  } to{
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
+  /* end 3d home page carousel */
+}
+ /* responsive mobile settings*/
+@media (max-width: 750px), (max-height: 450px) { body { max-width: 740px; } }
+@media (max-width: 450px), (max-height: 350px) { body{ max-width: 440px; } }
+@media (max-width: 280px), (max-height: 250px) { body { max-width: 270px;} }
+ /* responsive mobile settings contact form*/
+ @media (max-width: 750px), (max-height: 450px) { #card-body { max-width: 600px; } }
+ @media (max-width: 450px), (max-height: 350px) { #card-body{ max-width: 350px; } }
+ @media (max-width: 280px), (max-height: 250px) { #card-body { max-width: 200px;} }
+ 
+ /* responsive footer mobile settings*/
+ @media (max-width: 750px), (max-height: 450px) { h1{ font-size: 20px; } }
+ @media (max-width: 450px), (max-height: 350px) { h1{ font-size: 20px; } }
+ @media (max-width: 280px), (max-height: 250px) { h1{ font-size: 20px;} }
+  /* responsive nav-bar mobile settings*/
+@media (max-width: 750px), (max-height: 450px) { .navbar { max-width: 735px; } }
+@media (max-width: 450px), (max-height: 350px) { .navbar{ max-width: 435px; } }
+@media (max-width: 280px), (max-height: 250px) { .navbar { max-width: 265px;} }
